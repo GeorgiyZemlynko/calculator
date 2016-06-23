@@ -1,0 +1,9 @@
+D:\gitprogect\calcul\calculator\calculator\bin\Debug\calculator.exe.config
+D:\gitprogect\calcul\calculator\calculator\bin\Debug\calculator.exe
+D:\gitprogect\calcul\calculator\calculator\bin\Debug\calculator.pdb
+D:\gitprogect\calcul\calculator\calculator\obj\Debug\calculator.csprojResolveAssemblyReference.cache
+D:\gitprogect\calcul\calculator\calculator\obj\Debug\calculator.Form1.resources
+D:\gitprogect\calcul\calculator\calculator\obj\Debug\calculator.Properties.Resources.resources
+D:\gitprogect\calcul\calculator\calculator\obj\Debug\calculator.csproj.GenerateResource.Cache
+D:\gitprogect\calcul\calculator\calculator\obj\Debug\calculator.exe
+D:\gitprogect\calcul\calculator\calculator\obj\Debug\calculator.pdb
