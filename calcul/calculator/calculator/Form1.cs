@@ -213,7 +213,7 @@ namespace calculator
             }
             textBox1.Focus();
         }
-
+        // точка
         private void dot(object sender, EventArgs e)
         {
             textBox1.Text.Replace(",", ".");
@@ -221,6 +221,89 @@ namespace calculator
             {
                 textBox1.Text += CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator;
             }
+        }
+        // очищает все записи
+        private void clear_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            label1.Text = "";
+            textBox1.Focus();
+        }
+        // удаление последней цыфры
+        private void lastleter_click(object sender, EventArgs e)
+        {
+            int lenght = textBox1.Text.Length - 1;
+            string text = textBox1.Text;
+            textBox1.Clear();
+            for (int i = 0; i < lenght; i++)
+            {
+                textBox1.Text = textBox1.Text + text[i];
+            }
+            textBox1.Focus();
+        }
+        // Кнопка для смены знака числа
+        private void change_click(object sender, EventArgs e)
+        {
+            if (znak == true)
+            {
+                textBox1.Text = "-" + textBox1.Text;
+                znak = false;
+            }
+            else if (znak == false)
+            {
+                textBox1.Text = textBox1.Text.Replace("-", "");
+                znak = true;
+            }
+        }
+        // Закрытие приложения
+        private void close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        // факториал
+        private void factorial_click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Введите операнд!");
+                textBox1.Select();
+            }
+            else
+                try
+                {
+                    Exception ex = new Exception();
+                    this.a = double.Parse(textBox1.Text);
+                    if (this.a < 0 || this.a > 1000)
+                        throw ex;
+                    else
+                    {
+                        diaposone();
+                        double result = 1;
+                        for (int i = 1; i <= this.a; i++)
+                        {
+                            result *= i;
+                        }
+                        if (result <= 0 || result > 1000000)
+                        {
+                            MessageBox.Show("Превышен диапозон");
+                            textBox1.Clear();
+                            textBox1.Select();
+                        }
+                        else
+                        {
+                            textBox1.Text = result.ToString();
+                            textBox1.Select();
+                            textBox1.SelectAll();
+                        }
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Неверное значение либо превышен диапозон!");
+                    this.a = 0;
+                    textBox1.Clear();
+                    textBox1.Select();
+                }
         }
 
         // Реализация 3 знаков после точки
