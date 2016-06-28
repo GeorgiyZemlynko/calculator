@@ -305,7 +305,6 @@ namespace calculator
                     textBox1.Select();
                 }
         }
-
         // Реализация 3 знаков после точки
         private void diaposone()
         {
@@ -316,6 +315,158 @@ namespace calculator
                 MessageBox.Show("Превышен диапозон");
                 textBox1.Clear();
                 textBox1.Focus();
+            }
+        }
+        // Вычисление квадрата
+        private void kvadrat_click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                double x;
+                x = Convert.ToDouble(textBox1.Text) * Convert.ToDouble(textBox1.Text);
+                if (x <= -1000000 || x > 1000000)
+                {
+                    MessageBox.Show("Превышен диапозон");
+                    textBox1.Clear();
+                    textBox1.Select();
+                }
+                textBox1.Text = Convert.ToString(x);
+                textBox1.Select();
+            }
+            else
+            {
+                return;
+            }
+        }
+        // Вычисление корня
+        private void squer_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                double k;
+                k = Convert.ToDouble(textBox1.Text);
+                if (k <= -1000000 || k > 1000000)
+                {
+                    MessageBox.Show("Превышен диапозон");
+                    textBox1.Clear();
+                    textBox1.Select();
+                }
+                else
+                {
+                    label1.Text = Convert.ToString(Math.Sqrt(k));
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+        // Вычисление синуса
+        private void sin_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                a = double.Parse(textBox1.Text);
+                if (a <= -1000000 || a > 1000000)
+                {
+                    MessageBox.Show("Превышен диапозон");
+                    textBox1.Clear();
+                    textBox1.Select();
+                }
+                else
+                {
+                    textBox1.Text = (Math.Sin(a)).ToString("G4");
+                    label1.Text = "";
+                }
+            }
+            else MessageBox.Show("Введите исходные данные!");
+            textBox1.Focus();
+        }
+        // Вычисление дроби (1/число)
+        private void drobi_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                a = double.Parse(textBox1.Text);
+                if (a <= -1000000 || a > 1000000)
+                {
+                    MessageBox.Show("Превышен диапозон");
+                    textBox1.Clear();
+                    textBox1.Select();
+                }
+                else
+                {
+                    textBox1.Text = (1 / a).ToString("G4");
+                    label1.Text = "";
+                }
+            }
+            else MessageBox.Show("Введите исходные данные!");
+            textBox1.Focus();
+        }
+        // Вычисление косинуса
+        private void cos_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                a = double.Parse(textBox1.Text);
+                if (a <= -1000000 || a > 1000000)
+                {
+                    MessageBox.Show("Превышен диапозон");
+                    textBox1.Clear();
+                    textBox1.Select();
+                }
+                else
+                {
+                    textBox1.Text = (Math.Cos(a)).ToString("G4");
+                    label1.Text = "";
+                }
+            }
+            else MessageBox.Show("Введите исходные данные!");
+            textBox1.Focus();
+        }
+
+        // Защита от вода букв
+        private void text_Key(object sender, KeyPressEventArgs e)
+        {
+            if (!((e.KeyChar == '.' || e.KeyChar == ',') &&
+                textBox1.Text.IndexOf('.') == -1 &&
+                textBox1.Text.IndexOf(',') == -1))
+            {
+                e.Handled = true;
+            }
+            switch (e.KeyChar)
+            {
+                case (char)Keys.Decimal:
+                case (char)Keys.Oemcomma: dot(null, null); e.Handled = true; break;
+                default: break;
+            }
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
+        }
+        // защита панели
+        private void Calculater_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.C:
+                    if (e.Control)
+                    {
+                        textBox1.Text = "";
+                        textBox1.Select();
+                    }
+                    break;
+                case Keys.V:
+                    if (e.Control)
+                    {
+                        textBox1.Text = "";
+                        textBox1.Select();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
